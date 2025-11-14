@@ -76,9 +76,28 @@ button {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.04em;
+  transition: transform var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo__img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.logo:hover .logo__img {
+  transform: rotate(5deg) scale(1.1);
 }
 
 .logo__accent {
@@ -249,7 +268,7 @@ button {
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 0.75rem;
+  font-size: 1.1rem;
 }
 
 .hero__title {

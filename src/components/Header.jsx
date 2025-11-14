@@ -18,6 +18,7 @@ const Header = () => {
     <header className="header">
       <div className="container header__inner">
         <a className="logo" href="#top" onClick={closeMenu}>
+          <img src="/logo.svg" alt="esc0em DEV Logo" className="logo__img" />
           <span className="logo__accent">esc0em</span> DEV
         </a>
 
