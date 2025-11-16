@@ -78,49 +78,52 @@ const Projects = () => {
       </div>
 
       {selectedProject && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal__close" onClick={closeModal} aria-label="Закрыть">
+        <div className="project-viewer" onClick={closeModal}>
+          <div className="project-viewer__inner" onClick={(e) => e.stopPropagation()}>
+            <button className="project-viewer__close" onClick={closeModal} aria-label="Закрыть">
               ✕
             </button>
-            <article className="modal__content">
-              <h2 className="modal__title">{selectedProject.title}</h2>
-              
-              {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
+
+            {selectedProject.screenshots && selectedProject.screenshots.length > 0 ? (
+              <div className="project-viewer__split">
+                {/* Галерея */}
                 <div 
-                  className="modal__gallery"
+                  className="project-gallery"
                   onTouchStart={handleTouchStart}
                   onTouchMove={handleTouchMove}
                   onTouchEnd={handleTouchEnd}
                 >
-                  <div className="gallery__viewer">
+                  <div className="project-gallery__main">
                     <img
                       src={selectedProject.screenshots[currentScreenshot].path}
                       alt={selectedProject.screenshots[currentScreenshot].caption}
-                      className="gallery__image"
+                      className="project-gallery__image"
                     />
-                    <p className="gallery__caption">
-                      {selectedProject.screenshots[currentScreenshot].caption}
-                    </p>
-                    <div className="gallery__counter">
-                      {currentScreenshot + 1} / {selectedProject.screenshots.length}
+                    <div className="project-gallery__overlay">
+                      <div className="project-gallery__counter">
+                        {currentScreenshot + 1} / {selectedProject.screenshots.length}
+                      </div>
+                      <p className="project-gallery__caption">
+                        {selectedProject.screenshots[currentScreenshot].caption}
+                      </p>
                     </div>
                   </div>
-                  <div className="gallery__controls">
+
+                  <div className="project-gallery__nav">
                     <button
-                      className="gallery__btn gallery__btn--prev"
+                      className="project-gallery__arrow project-gallery__arrow--prev"
                       onClick={prevScreenshot}
                       disabled={currentScreenshot === 0}
-                      aria-label="Предыдущий скриншот"
+                      aria-label="Предыдущий"
                     >
-                      ←
+                      ‹
                     </button>
-                    <div className="gallery__indicators">
+                    <div className="project-gallery__dots">
                       {selectedProject.screenshots.map((_, index) => (
                         <button
                           key={index}
-                          className={`gallery__indicator ${
-                            index === currentScreenshot ? 'gallery__indicator--active' : ''
+                          className={`project-gallery__dot ${
+                            index === currentScreenshot ? 'active' : ''
                           }`}
                           onClick={() => setCurrentScreenshot(index)}
                           aria-label={`Скриншот ${index + 1}`}
@@ -128,45 +131,86 @@ const Projects = () => {
                       ))}
                     </div>
                     <button
-                      className="gallery__btn gallery__btn--next"
+                      className="project-gallery__arrow project-gallery__arrow--next"
                       onClick={nextScreenshot}
                       disabled={currentScreenshot === selectedProject.screenshots.length - 1}
-                      aria-label="Следующий скриншот"
+                      aria-label="Следующий"
                     >
-                      →
+                      ›
                     </button>
                   </div>
                 </div>
-              )}
-              
-              <div className="modal__section">
-                <h4>Задача</h4>
-                <p>{selectedProject.problem}</p>
+
+                {/* Информация */}
+                <div className="project-info">
+                  <div className="project-info__content">
+                    <h2 className="project-info__title">{selectedProject.title}</h2>
+                    
+                    <div className="project-info__section">
+                      <h4>Задача</h4>
+                      <p>{selectedProject.problem}</p>
+                    </div>
+                    
+                    <div className="project-info__section">
+                      <h4>Что сделал</h4>
+                      <ul className="project-info__list">
+                        {selectedProject.solution.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="project-info__section">
+                      <h4>Результат</h4>
+                      <p>{selectedProject.result}</p>
+                    </div>
+                    
+                    <div className="project-info__section">
+                      <h4>Стек</h4>
+                      <ul className="project-info__stack">
+                        {selectedProject.stack.map(tech => (
+                          <li key={tech}>{tech}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
-              <div className="modal__section">
-                <h4>Что сделал</h4>
-                <ul className="modal__list">
-                  {selectedProject.solution.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
+            ) : (
+              <div className="project-info project-info--full">
+                <div className="project-info__content">
+                  <h2 className="project-info__title">{selectedProject.title}</h2>
+                  
+                  <div className="project-info__section">
+                    <h4>Задача</h4>
+                    <p>{selectedProject.problem}</p>
+                  </div>
+                  
+                  <div className="project-info__section">
+                    <h4>Что сделал</h4>
+                    <ul className="project-info__list">
+                      {selectedProject.solution.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="project-info__section">
+                    <h4>Результат</h4>
+                    <p>{selectedProject.result}</p>
+                  </div>
+                  
+                  <div className="project-info__section">
+                    <h4>Стек</h4>
+                    <ul className="project-info__stack">
+                      {selectedProject.stack.map(tech => (
+                        <li key={tech}>{tech}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              
-              <div className="modal__section">
-                <h4>Результат</h4>
-                <p>{selectedProject.result}</p>
-              </div>
-              
-              <div className="modal__section">
-                <h4>Стек</h4>
-                <ul className="modal__stack">
-                  {selectedProject.stack.map(tech => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+            )}
           </div>
         </div>
       )}
