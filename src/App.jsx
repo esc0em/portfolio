@@ -21,25 +21,39 @@ const ScrollToSection = () => {
 };
 
 const AnimationObserver = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    const elements = document.querySelectorAll('[data-animate]');
+    let observer = null;
+    
+    // Небольшая задержка, чтобы DOM успел отрендериться
+    const timeoutId = setTimeout(() => {
+      const elements = document.querySelectorAll('[data-animate]');
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+      observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '50px' }
+      );
 
-    elements.forEach(element => observer.observe(element));
+      elements.forEach(element => {
+        // Убираем старый класс, если он был
+        element.classList.remove('is-visible');
+        observer.observe(element);
+      });
+    }, 50);
 
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      clearTimeout(timeoutId);
+      if (observer) observer.disconnect();
+    };
+  }, [location.pathname]);
 
   return null;
 };
