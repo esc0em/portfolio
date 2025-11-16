@@ -926,30 +926,57 @@ button {
     padding: 24px;
   }
 
+  .modal-overlay {
+    padding: 0;
+  }
+
   .modal {
-    max-height: 95vh;
-    margin: 10px;
+    max-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
   }
 
   .modal__content {
-    padding: 36px 24px;
+    padding: 60px 20px 24px;
+    height: 100%;
   }
 
   .modal__title {
-    font-size: 1.5rem;
-    padding-right: 50px;
+    font-size: 1.4rem;
+    padding-right: 40px;
   }
 
   .modal__close {
-    width: 36px;
-    height: 36px;
-    top: 16px;
-    right: 16px;
-    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    right: 12px;
+    font-size: 1.3rem;
+    z-index: 100;
+  }
+
+  .modal__section {
+    gap: 10px;
   }
 
   .modal__section h4 {
     font-size: 0.85rem;
+  }
+
+  .modal__section p {
+    font-size: 0.9rem;
+  }
+
+  .modal__list {
+    padding-left: 20px;
+    font-size: 0.9rem;
+  }
+
+  .modal__list li + li {
+    margin-top: 10px;
   }
 
   .modal__stack li {
@@ -958,64 +985,84 @@ button {
   }
 
   .modal__gallery {
-    padding: 12px;
-    gap: 12px;
+    padding: 16px 10px;
+    gap: 14px;
+    margin: -10px;
   }
 
   .gallery__viewer {
-    gap: 8px;
+    gap: 10px;
   }
 
   .gallery__image {
-    max-width: 280px;
+    max-width: 100%;
+    width: 100%;
     border-width: 1px;
   }
 
   .gallery__caption {
     font-size: 0.8rem;
     line-height: 1.4;
+    padding: 0 5px;
   }
 
   .gallery__counter {
-    top: 4px;
-    right: 4px;
-    padding: 4px 10px;
+    top: 6px;
+    right: 6px;
+    padding: 5px 11px;
     font-size: 0.75rem;
   }
 
   .gallery__controls {
-    gap: 12px;
+    gap: 10px;
+    padding: 0 10px;
   }
 
   .gallery__btn {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
   }
 
   .gallery__indicators {
-    max-width: 180px;
-    gap: 5px;
+    max-width: 200px;
+    gap: 6px;
   }
 
   .gallery__indicator {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
   }
 
   .gallery__indicator--active {
-    width: 18px;
+    width: 20px;
   }
 }
 
 @media (max-width: 400px) {
+  .modal__content {
+    padding: 55px 16px 20px;
+  }
+
+  .modal__title {
+    font-size: 1.3rem;
+  }
+
+  .modal__close {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    right: 10px;
+  }
+
   .modal__gallery {
-    padding: 10px;
-    gap: 10px;
+    padding: 14px 8px;
+    gap: 12px;
   }
 
   .gallery__image {
-    max-width: 240px;
+    max-width: 100%;
+    width: 100%;
   }
 
   .gallery__caption {
@@ -1023,18 +1070,18 @@ button {
   }
 
   .gallery__counter {
-    padding: 3px 8px;
+    padding: 4px 9px;
     font-size: 0.7rem;
   }
 
   .gallery__btn {
-    width: 28px;
-    height: 28px;
-    font-size: 0.85rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 
   .gallery__indicators {
-    max-width: 150px;
+    max-width: 160px;
   }
 }
 
