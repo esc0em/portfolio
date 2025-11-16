@@ -1,14 +1,26 @@
 import { useEffect } from 'react';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Services from './components/Services.jsx';
-import Contacts from './components/Contacts.jsx';
-import Footer from './components/Footer.jsx';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import HomePage from './pages/HomePage.jsx';
+import ProjectPage from './pages/ProjectPage.jsx';
 
-const App = () => {
+const ScrollToSection = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
+
+  return null;
+};
+
+const AnimationObserver = () => {
   useEffect(() => {
     const elements = document.querySelectorAll('[data-animate]');
 
@@ -29,19 +41,19 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
+  return null;
+};
+
+const App = () => {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Services />
-        <Contacts />
-      </main>
-      <Footer />
-    </>
+    <Router>
+      <ScrollToSection />
+      <AnimationObserver />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/project/:id" element={<ProjectPage />} />
+      </Routes>
+    </Router>
   );
 };
 
