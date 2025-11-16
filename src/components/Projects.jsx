@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import SectionTitle from './SectionTitle.jsx';
 import { projects } from '../data/projects.js';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentScreenshot, setCurrentScreenshot] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -28,6 +30,31 @@ const Projects = () => {
 
   const prevScreenshot = () => {
     setCurrentScreenshot((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!selectedProject?.screenshots) return;
+    
+    const swipeDistance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Свайп влево - следующий
+        nextScreenshot();
+      } else {
+        // Свайп вправо - предыдущий
+        prevScreenshot();
+      }
+    }
   };
 
   return (
@@ -60,7 +87,12 @@ const Projects = () => {
               <h2 className="modal__title">{selectedProject.title}</h2>
               
               {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
-                <div className="modal__gallery">
+                <div 
+                  className="modal__gallery"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
                   <div className="gallery__viewer">
                     <img
                       src={selectedProject.screenshots[currentScreenshot].path}
@@ -70,6 +102,9 @@ const Projects = () => {
                     <p className="gallery__caption">
                       {selectedProject.screenshots[currentScreenshot].caption}
                     </p>
+                    <div className="gallery__counter">
+                      {currentScreenshot + 1} / {selectedProject.screenshots.length}
+                    </div>
                   </div>
                   <div className="gallery__controls">
                     <button
