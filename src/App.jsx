@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -8,11 +8,7 @@ import Services from './components/Services.jsx';
 import Contacts from './components/Contacts.jsx';
 import Footer from './components/Footer.jsx';
 
-import { projects } from './data/projects.js';
-
 const App = () => {
-  const [activeProjectId, setActiveProjectId] = useState(projects[0].id);
-
   useEffect(() => {
     const elements = document.querySelectorAll('[data-animate]');
 
@@ -40,7 +36,7 @@ const App = () => {
         <Hero />
         <About />
         <Skills />
-        <Projects activeProjectId={activeProjectId} setActiveProjectId={setActiveProjectId} />
+        <Projects />
         <Services />
         <Contacts />
       </main>
