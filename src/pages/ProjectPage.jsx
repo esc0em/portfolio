@@ -129,6 +129,7 @@ const ProjectPage = () => {
             </button>
           </footer>
         </article>
+        </div>
       </div>
       <Footer />
     </>
