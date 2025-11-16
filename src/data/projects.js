@@ -11,8 +11,50 @@ export const projects = [
       'Сделал веб-админку на FastAPI для команды сервиса: календарь, управление слотами, отметки о выполненных услугах.'
     ],
     result:
-      'Запись стала занимать до 1 минуты, мастера видят актуальное расписание, владелец отслеживает загрузку по дням. Количество “забытых” визитов уменьшилось на ~40%.',
-    stack: ['Python', 'Aiogram', 'FastAPI', 'PostgreSQL', 'SMS Aero API']
+      'Запись стала занимать до 1 минуты, мастера видят актуальное расписание, владелец отслеживает загрузку по дням. Количество "забытых" визитов уменьшилось на ~40%.',
+    stack: ['Python', 'Aiogram', 'FastAPI', 'PostgreSQL', 'SMS Aero API'],
+    screenshots: [
+      {
+        path: '/projects/detailing-bot/01-main-menu.jpg',
+        caption: 'Главное меню бота с описанием услуг и навигацией'
+      },
+      {
+        path: '/projects/detailing-bot/02-service-selection.jpg',
+        caption: 'Выбор направления услуги и удобной даты визита'
+      },
+      {
+        path: '/projects/detailing-bot/03-time-selection.jpg',
+        caption: 'Выбор времени записи из доступных слотов'
+      },
+      {
+        path: '/projects/detailing-bot/04-contact-input.jpg',
+        caption: 'Отправка контактного номера телефона'
+      },
+      {
+        path: '/projects/detailing-bot/05-notification-method.jpg',
+        caption: 'Выбор способа напоминания: Telegram или SMS'
+      },
+      {
+        path: '/projects/detailing-bot/06-booking-confirmed.jpg',
+        caption: 'Подтверждение записи с полной информацией'
+      },
+      {
+        path: '/projects/detailing-bot/07-admin-notification.jpg',
+        caption: 'Уведомление для админа о новой записи'
+      },
+      {
+        path: '/projects/detailing-bot/08-admin-panel.jpg',
+        caption: 'Админ-панель с управлением записями и расписанием'
+      },
+      {
+        path: '/projects/detailing-bot/09-slot-blocking.jpg',
+        caption: 'Блокировка временных слотов администратором'
+      },
+      {
+        path: '/projects/detailing-bot/10-booking-cancel.jpg',
+        caption: 'Возможность отмены записи клиентом'
+      }
+    ]
   },
   {
     id: 'periphery-shop',

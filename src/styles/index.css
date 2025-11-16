@@ -620,6 +620,109 @@ button {
   transform: translateY(-2px);
 }
 
+/* Gallery Styles */
+.modal__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(17, 26, 47, 0.5);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.gallery__viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.gallery__image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform var(--transition);
+}
+
+.gallery__image:hover {
+  transform: scale(1.02);
+}
+
+.gallery__caption {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.gallery__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gallery__btn {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.gallery__btn:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.gallery__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.gallery__indicators {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 300px;
+}
+
+.gallery__indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.3);
+  border: none;
+  padding: 0;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.gallery__indicator:hover {
+  background: rgba(56, 189, 248, 0.5);
+  transform: scale(1.2);
+}
+
+.gallery__indicator--active {
+  background: var(--accent);
+  width: 24px;
+  border-radius: 5px;
+}
+
 .services {
   display: grid;
   gap: 22px;
@@ -833,6 +936,38 @@ button {
   .modal__stack li {
     padding: 6px 12px;
     font-size: 0.85rem;
+  }
+
+  .modal__gallery {
+    padding: 16px;
+  }
+
+  .gallery__image {
+    max-width: 100%;
+  }
+
+  .gallery__caption {
+    font-size: 0.85rem;
+  }
+
+  .gallery__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .gallery__indicators {
+    max-width: 200px;
+    gap: 6px;
+  }
+
+  .gallery__indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .gallery__indicator--active {
+    width: 20px;
   }
 }
 
