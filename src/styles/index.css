@@ -1431,24 +1431,6 @@ button {
     linear-gradient(135deg, #1a0f14 0%, #1f1116 50%, #0f1419 100%);
 }
 
-/* Barbershop Bot - Коричневые и золотые тона (барбершоп, премиум) */
-.project-page--barbershop-bot .project-page__background {
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(217, 119, 6, 0.12), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(161, 98, 7, 0.1), transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(180, 83, 9, 0.08), transparent 50%),
-    linear-gradient(135deg, #0f0d0b 0%, #1a140e 50%, #120f0d 100%);
-}
-
-/* Chef Recipes - Теплые кремовые и оранжевые тона (кулинария, кухня) */
-.project-page--chef-recipes .project-page__background {
-  background: 
-    radial-gradient(circle at 20% 25%, rgba(251, 146, 60, 0.14), transparent 40%),
-    radial-gradient(circle at 80% 75%, rgba(245, 158, 11, 0.11), transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(252, 211, 77, 0.08), transparent 55%),
-    linear-gradient(135deg, #1a1410 0%, #1f1814 50%, #14110e 100%);
-}
-
 .project-page__container {
   width: min(1200px, 94vw);
   margin: 0 auto;
