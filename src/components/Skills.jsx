@@ -16,8 +16,8 @@ const Skills = () => (
     <div className="container section__inner">
       <SectionTitle title="Навыки" subtitle="Инструменты, с которыми работаю каждый день" />
       <div className="skills">
-        {skills.map(skill => (
-          <article key={skill.id} className="skills__card">
+        {skills.map((skill, index) => (
+          <article key={skill.id} className="skills__card" style={{ '--index': index }}>
             <div className="skills__icon">{icons[skill.icon]}</div>
             <h3 className="skills__title">{skill.title}</h3>
             <p className="skills__description">{skill.description}</p>

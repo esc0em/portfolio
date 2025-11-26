@@ -26,11 +26,12 @@ const Services = () => (
     <div className="container section__inner">
       <SectionTitle title="Чем могу помочь" subtitle="Услуги и ориентиры по стоимости" />
       <div className="services">
-        {services.map(service => (
-          <article key={service.title} className="services__card">
+        {services.map((service, index) => (
+          <article key={service.title} className="services__card" style={{ '--index': index }}>
+            <div className="services__number">{String(index + 1).padStart(2, '0')}</div>
             <h3>{service.title}</h3>
             <p>{service.description}</p>
-            <span className="services__price">{service.price}</span>
+            <span className="services__price">💰 {service.price}</span>
           </article>
         ))}
       </div>
