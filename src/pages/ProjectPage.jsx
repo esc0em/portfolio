@@ -1,6 +1,6 @@
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { projects } from '../data/projects.js';
-import { FaArrowLeft, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowLeft, FaExternalLinkAlt, FaBullseye, FaLightbulb, FaRocket, FaCogs } from 'react-icons/fa';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 
@@ -52,24 +52,32 @@ const ProjectPage = () => {
             <p className="project-page__subtitle">{project.short}</p>
           </header>
 
-          <div className="project-page__grid">
-            <section className="project-page__section">
-              <div className="project-page__card">
-                <h2 className="project-page__section-title">
-                  <span className="project-page__number">01</span>
-                  Задача
-                </h2>
-                <p className="project-page__text">{project.problem}</p>
+          <div className="project-page__timeline">
+            <section className="project-page__timeline-item project-page__timeline-item--left">
+              <div className="project-page__timeline-icon">
+                <FaBullseye />
+              </div>
+              <div className="project-page__timeline-card">
+                <div className="project-page__timeline-label">
+                  <span className="project-page__timeline-number">01</span>
+                  <span className="project-page__timeline-text">Этап</span>
+                </div>
+                <h2 className="project-page__timeline-title">Задача</h2>
+                <p className="project-page__timeline-description">{project.problem}</p>
               </div>
             </section>
 
-            <section className="project-page__section">
-              <div className="project-page__card">
-                <h2 className="project-page__section-title">
-                  <span className="project-page__number">02</span>
-                  Решение
-                </h2>
-                <ul className="project-page__list">
+            <section className="project-page__timeline-item project-page__timeline-item--right">
+              <div className="project-page__timeline-icon">
+                <FaLightbulb />
+              </div>
+              <div className="project-page__timeline-card">
+                <div className="project-page__timeline-label">
+                  <span className="project-page__timeline-number">02</span>
+                  <span className="project-page__timeline-text">Этап</span>
+                </div>
+                <h2 className="project-page__timeline-title">Решение</h2>
+                <ul className="project-page__timeline-list">
                   {project.solution.map((item, index) => (
                     <li key={index}>{item}</li>
                   ))}
@@ -77,23 +85,31 @@ const ProjectPage = () => {
               </div>
             </section>
 
-            <section className="project-page__section">
-              <div className="project-page__card">
-                <h2 className="project-page__section-title">
-                  <span className="project-page__number">03</span>
-                  Результат
-                </h2>
-                <p className="project-page__text">{project.result}</p>
+            <section className="project-page__timeline-item project-page__timeline-item--left">
+              <div className="project-page__timeline-icon">
+                <FaRocket />
+              </div>
+              <div className="project-page__timeline-card">
+                <div className="project-page__timeline-label">
+                  <span className="project-page__timeline-number">03</span>
+                  <span className="project-page__timeline-text">Этап</span>
+                </div>
+                <h2 className="project-page__timeline-title">Результат</h2>
+                <p className="project-page__timeline-description">{project.result}</p>
               </div>
             </section>
 
-            <section className="project-page__section">
-              <div className="project-page__card">
-                <h2 className="project-page__section-title">
-                  <span className="project-page__number">04</span>
-                  Технологии
-                </h2>
-                <ul className="project-page__stack">
+            <section className="project-page__timeline-item project-page__timeline-item--right">
+              <div className="project-page__timeline-icon">
+                <FaCogs />
+              </div>
+              <div className="project-page__timeline-card">
+                <div className="project-page__timeline-label">
+                  <span className="project-page__timeline-number">04</span>
+                  <span className="project-page__timeline-text">Этап</span>
+                </div>
+                <h2 className="project-page__timeline-title">Технологии</h2>
+                <ul className="project-page__timeline-stack">
                   {project.stack.map(tech => (
                     <li key={tech}>{tech}</li>
                   ))}
@@ -104,10 +120,13 @@ const ProjectPage = () => {
 
           {project.screenshots && project.screenshots.length > 0 && (
             <section className="project-page__screenshots">
-              <h2 className="project-page__section-title">
-                <span className="project-page__number">05</span>
-                Скриншоты проекта
-              </h2>
+              <div className="project-page__screenshots-header">
+                <div className="project-page__timeline-label">
+                  <span className="project-page__timeline-number">05</span>
+                  <span className="project-page__timeline-text">Демонстрация</span>
+                </div>
+                <h2 className="project-page__timeline-title">Скриншоты проекта</h2>
+              </div>
               <div className="project-page__screenshots-grid">
                 {project.screenshots.map((screenshot, index) => (
                   <div key={index} className="project-page__screenshot">
