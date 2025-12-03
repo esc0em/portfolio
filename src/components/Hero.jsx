@@ -30,7 +30,7 @@ const Hero = () => (
       </div>
       <div className="hero__visual" aria-hidden="true">
         <div className="hero__frame">
-          <img src="/hero/screen-main.jpg" alt="Пример интерфейса из портфолио Никиты" loading="lazy" />
+          <img src="/hero/photo_2025-04-15_22-47-43.jpg" alt="Пример интерфейса из портфолио Никиты" loading="lazy" />
         </div>
       </div>
     </div>
